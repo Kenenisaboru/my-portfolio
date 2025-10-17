@@ -1,0 +1,255 @@
+/* === App.css — Full Upgraded Portfolio with Professional Hero & Rainbow CTA === */
+
+/* === Variables & Global === */
+:root {
+  --color-bg: hwb(150 9% 5% / 0.564);
+  --color-surface: #ffffff;
+  --color-text: #1f2937;
+  --color-muted: #6b7280;
+  --color-primary: #3b82f6;
+  --color-primary-dark: #2563eb;
+  --radius: 16px;
+  --shadow-soft: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-med: 0 8px 20px rgba(0,0,0,0.12);
+  --gap: 20px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body, html { scroll-behavior: smooth; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--color-bg); color: var(--color-text); }
+img { max-width: 100%; display: block; }
+:focus-visible { outline: 3px solid rgba(59,130,246,.9); outline-offset: 2px; }
+
+/* === Header === */
+.header {
+  padding: 16px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+.header-title { font-size: 1.5rem; font-weight: 800; color: var(--color-primary); }
+.nav { display: flex; gap: 20px; flex-wrap: wrap; }
+.nav-link { text-decoration: none; color: var(--color-text); font-weight: 600; position: relative; padding: 6px 0; transition: color 0.3s ease; }
+.nav-link::after { content: ''; position: absolute; width: 0; height: 3px; background: var(--color-primary); left: 0; bottom: -4px; transition: width 0.25s ease; border-radius: 2px; }
+.nav-link:hover { color: var(--color-primary-dark); }
+.nav-link:hover::after { width: 100%; }
+
+/* === Section Base === */
+.section {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+.section.visible { opacity: 1; transform: translateY(0); }
+.section-title { font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 12px; color: var(--color-primary-dark); }
+.section-description { text-align: center; color: var(--color-muted); max-width: 800px; margin: 0 auto 40px; font-size: 1rem; }
+
+/* === Hero Section — Professional Upgrade === */
+.hero {
+  padding: 100px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  margin: 400px 220px;
+  background: linear-gradient(135deg, #0f172a, #1e62af, #3b82f6);
+  color: #4a3b18;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+.hero::before, .hero::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  width: 200px;
+  height: 200px;
+  top: -50px;
+  left: -50px;
+  animation: floatCircle 12s ease-in-out infinite alternate;
+}
+.hero::after {
+  width: 1000px;
+  height: 300px;
+  top: auto;
+  bottom: -80px;
+  right: -80px;
+  animation-delay: 6s;
+}
+
+@keyframes floatCircle {
+  0% { transform: translate(0,0) rotate(0deg);}
+  50% { transform: translate(30px,-20px) rotate(45deg);}
+  100% { transform: translate(0,0) rotate(360deg);}
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+
+.hero-description {
+  font-size: 1.25rem;
+  max-width: 780px;
+  margin: 0 auto 28px;
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.hero.visible .hero-description {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-image {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 28px;
+  border: 4px solid greanrgba(255,255,255,0.85);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+  animation: floatImg 6s ease-in-out infinite;
+}
+
+@keyframes floatImg {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* CTA Button — Hero */
+.hero .cta-button {
+  padding: 16px 36px;
+  font-size: 1.05rem;
+  font-weight: 10000;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  color: #df142b;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  transition: all 0.3s ease;
+}
+
+.hero .cta-button:hover {
+  transform: translateY(-4px) scale(1.05);
+  background: linear-gradient(270deg, #06b6d4, #3b82f6, #0f172a);
+  color:#fff;
+  background-size: 100% 400%;
+  animation: rainbowBG 6s linear infinite;
+}
+
+/* === About Section === */
+#about {
+  background: linear-gradient(135deg,#e0f2fe,#fef9c3,#ede9fe);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  padding: 80px 20px;
+  margin: 40px auto;
+  max-width: 1000px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+#about.visible { opacity: 1; transform: translateY(0); }
+#about::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+  animation: rotateBG 15s linear infinite;
+  z-index: 0;
+}
+#about .section-title, #about .section-description, #about .profile-photo { position: relative; z-index: 1; }
+#about .section-description span {
+  display: inline-block;
+  background: linear-gradient(90deg,#ff4d4d,#ffad33,#33ff57,#33ffd7,#3399ff,#9933ff,#ff4d4d);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbowText 5s linear infinite;
+  cursor: default;
+}
+#about .profile-photo {
+  width: 160px; height: 160px; border-radius: 50%; object-fit: cover;
+  margin-bottom: 24px; border: 4px solid #fff; box-shadow: var(--shadow-soft);
+}
+@keyframes rainbowText { 0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%} }
+@keyframes rotateBG { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* === Skills Section === */
+.skills-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 16px; }
+.skill-item {
+  padding: 14px 16px; text-align: center; font-weight: 600;
+  border-radius: 999px; background: linear-gradient(135deg,#e0e7ff,#c7d2fe);
+  border: 1px solid #dbeafe;
+  opacity: 0; transform: translateY(20px); transition: all .6s ease, box-shadow .3s ease;
+  --delay:0s;
+}
+.skill-item.visible { opacity:1; transform:translateY(0); transition-delay: var(--delay); }
+.skill-item:hover { transform: translateY(-6px); box-shadow:0 14px 28px rgba(59,130,246,.2); }
+.skill-bar { width: 100%; background: #e5e7eb; border-radius: 999px; margin-top: 6px; height: 8px; overflow: hidden; }
+.skill-progress { height: 8px; background: linear-gradient(135deg,#3b82f6,#6366f1); border-radius: 999px; width: 0%; animation: fillSkill 1.2s forwards; }
+@keyframes fillSkill { from{width:0%} to{width:var(--skill-level)} }
+
+/* === Projects Section === */
+.projects-list { display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap: 28px; }
+.project-item {
+  padding: 24px; background: linear-gradient(145deg,#fff,#f3f4ff);
+  border-radius: var(--radius); box-shadow: var(--shadow-soft);
+  opacity: 0; transform: translateY(20px); transition: all .6s ease, box-shadow .3s ease; --delay:0s;
+}
+.project-item.visible { opacity:1; transform:translateY(0); transition-delay: var(--delay); }
+
+/* === Testimonials Section === */
+.testimonials { background: linear-gradient(135deg,#eef2ff,#e0f2fe); border-radius: var(--radius); box-shadow: var(--shadow-soft); padding: 80px 20px; }
+.testimonials-list { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 24px; margin-top: 40px; }
+.testimonial-item { background: var(--color-surface); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-soft); text-align: center; opacity:0; transform:translateY(20px); transition: all 0.6s ease; --delay:0s; }
+.testimonial-item.visible { opacity:1; transform:translateY(0); transition-delay:var(--delay); }
+.testimonial-photo { width:80px; height:80px; border-radius:50%; object-fit:cover; border:3px solid var(--color-primary); margin-bottom:16px; transition: transform .3s ease, box-shadow .3s ease; }
+.testimonial-item:hover .testimonial-photo { transform: scale(1.05); box-shadow:0 8px 24px rgba(59,130,246,0.3); }
+.testimonial-name { font-weight:700; color:var(--color-primary-dark); margin-top:10px; }
+.testimonial-role { font-size:.9rem; color:var(--color-muted); margin-bottom:12px; }
+
+/* === Awards Section === */
+.awards-list { display: grid; grid-template-columns: repeat(auto-fill,minmax(220px,1fr)); gap: 20px; }
+.award-item { background: var(--color-surface); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow-soft); text-align: center; opacity:0; transform:translateY(20px); transition: opacity .6s ease, transform .6s ease; --delay:0s; }
+.award-item.visible { opacity:1; transform:translateY(0); transition-delay:var(--delay); }
+
+/* === Contact Section === */
+.contact-links { display:flex; flex-wrap:wrap; gap:16px; justify-content:center; margin-top:20px; }
+.contact-btn { display:flex; align-items:center; gap:8px; padding:12px 20px; border-radius:999px; text-decoration:none; color:#fff; font-weight:600; background:var(--color-primary); transition: all 0.3s ease; }
+.contact-btn:hover { transform: translateY(-4px) scale(1.05); box-shadow:0 10px 20px rgba(59,130,246,0.25); }
+
+/* === Profile Footer — Animated Rainbow === */
+.profile-footer { text-align:center; margin:40px auto; max-width:800px; padding:30px 20px; border-radius: var(--radius); background: linear-gradient(135deg,#ffffff,#e0f2fe); box-shadow: var(--shadow-soft); opacity:0; transform:translateY(20px); transition:all 0.6s ease; }
+.profile-footer.visible { opacity:1; transform:translateY(0); }
+.profile-footer .profile-photo { width:140px; height:140px; border-radius:50%; margin-bottom:16px; border:3px solid var(--color-primary); object-fit:cover; }
+.profile-footer h3, .profile-footer p { display:inline-block; background: linear-gradient(90deg,#ff4d4d,#ffad33,#33ff57,#33ffd7,#3399ff,#9933ff,#ff4d4d); background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent; animation: rainbowText 5s linear infinite; font-weight:700; }
+.profile-footer p { font-weight:500; margin-top:12px; font-size:1.1rem; }
+
+/* === Footer === */
+.footer { text-align:center; padding:20px; font-size:.9rem; color:var(--color-muted); }
+
+/* === Responsive === */
+@media (max-width:900px){
+  .header{padding:12px 16px;}
+  .section{padding:60px 16px;}
+  .hero-title { font-size:2.4rem; }
+  .hero-description { font-size:1.1rem; }
+  .hero-image { width:140px; height:140px; }
+}
+
+/* === CTA Rainbow Animation Keyframes === */
+@keyframes rainbowBG { 0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%} }
